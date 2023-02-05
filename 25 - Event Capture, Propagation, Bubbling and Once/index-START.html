@@ -43,6 +43,18 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div');
+
+  // e.stopPropagation(); makes it so I will only trigger the selected element, it won't bubble up along the parents.
+  function logText(e) {
+    console.log(this.classList.value);
+    e.stopPropagation();
+  };
+
+  // OPTIONS OBJECTS: pass as third argument, syntax: {...: ..., ...: ..., ...: ...}
+  // capture: true, trigger parents from oldest to youngest (inverse order than default)
+  // once: true, will remove event listener after first time it's triggered (useful in store checkouts for example)
+  divs.forEach(div => div.addEventListener('click', logText));
 
 </script>
 </body>
